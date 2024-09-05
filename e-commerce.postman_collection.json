@@ -1,0 +1,1235 @@
+{
+	"info": {
+		"_postman_id": "a28fff3b-56af-4a98-a21b-cde3585d4e26",
+		"name": "e-commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34825163"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"P@ssw0rd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"P@ssw0rd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/auth/logout",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/auth/refresh-token",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "# Authentication API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing user authentication, including registration, login, token refresh, and logout. It includes route definitions and schema details for validation.\n\n---\n\n## Endpoints\n\n### 1\\. Register\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/auth/register`\n    \n- **Description:** Registers a new user.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"fullName\": \"John Doe\", \n  // Required. The full name of the user.\n  \"email\": \"john.doe@example.com\", \n  // Required. The email address of the user.\n  \"password\": \"P@ssw0rd\", \n  // Required. The password for the account.\n}\n\n ```\n\n---\n\n### 2\\. Login\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/auth/login`\n    \n- **Description:** Logs in an existing user.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"email\": \"john.doe@example.com\", \n  // Required. The email address of the user.\n  \"password\": \"P@ssw0rd\" \n  // Required. The password for the account.\n}\n\n ```\n\n---\n\n### 3\\. Refresh Token\n\n- **Method:** GET\n    \n- **Endpoint:** `/api/auth/refresh-token`\n    \n- **Description:** Refreshes the authentication token using a valid refresh token.\n    \n\n---\n\n### 4\\. Logout\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/auth/logout`\n    \n- **Description:** Logs out the user, invalidating the current session.\n    \n\n---\n\nThis documentation provides the necessary details to interact with the authentication API, including the endpoints, methods, and the expected request body format for each operation."
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "category",
+					"item": [
+						{
+							"name": "add category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Electronics\",\r\n    \"description\": \"\",\r\n    \"parent\": null,\r\n    \"icon\": \"icon.svg\",\r\n    \"image\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/category/add",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"category",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update category",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Electronics\",\r\n    \"description\": \"All kinds of electronics\",\r\n    \"parent\": \"605c72efb4b7a7b7d8e5e0a1\",\r\n    \"icon\": \"icon.svg\",\r\n    \"image\": \"https://example.com/image1.png\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/category/update/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"category",
+										"update",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66d94d57552dad76e8058e52"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove category",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/category/remove/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"category",
+										"remove",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66d94d57552dad76e8058e52"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Admin Category API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing categories in the admin section. It includes route definitions and schema details for adding, updating, and removing categories.\n\n---\n\n## Endpoints\n\n### 1\\. Add Category\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/admin/categories/add`\n    \n- **Description:** Adds a new category.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"title\": \"Electronics\",\n  // Required. The name of the category.\n  \"description\": \"All kinds of electronics\",\n  // Optional. A brief description of the category. Must be a string or an empty string.\n  \"parent\": \"605c72efb4b7a7b7d8e5e0a1\",\n  // Optional. The ID of the parent category. Must be a valid MongoDB ObjectID or null.\n  \"icon\": \"icon-electronics.svg\",\n  // Required. An identifier for the category icon.\n  \"image\": \"https://example.com/electronics.jpg\"\n  // Optional. A URL to an image representing the category. Must be a valid URL or null.\n}\n\n ```\n\n---\n\n### 2\\. Update Category\n\n- **Method:** PATCH\n    \n- **Endpoint:** `/api/admin/categories/update/:id`\n    \n- **Description:** Updates an existing category by ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the category to update. Must be a valid MongoDB ObjectID.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"title\": \"Updated Electronics\",\n  // Optional. The new name of the category.\n  \"description\": \"Updated description\",\n  // Optional. The new description of the category.\n  \"parent\": \"605c72efb4b7a7b7d8e5e0a2\",\n  // Optional. The new parent category ID. Must be a valid MongoDB ObjectID or null.\n  \"icon\": \"icon-updated-electronics.svg\",\n  // Optional. The new identifier for the category icon.\n  \"image\": \"https://example.com/updated-electronics.jpg\"\n  // Optional. The new URL to an image representing the category. Must be a valid URL or null.\n}\n\n ```\n\n---\n\n### 3\\. Remove Category\n\n- **Method:** DELETE\n    \n- **Endpoint:** `/api/admin/categories/remove/:id`\n    \n- **Description:** Deletes a category by ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the category to delete. Must be a valid MongoDB ObjectID.\n    \n\n---\n\nThis documentation provides the necessary details to interact with the admin category management API, including the endpoints, methods, and schema requirements for managing categories."
+				},
+				{
+					"name": "brand",
+					"item": [
+						{
+							"name": "add brand",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Nike\",\r\n    \"description\": \"\",\r\n    \"image\": \"https://example.com/image.jpg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/brand/add",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"brand",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update brand",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Nike\",\r\n    \"description\": \"Leading sportswear brand\",\r\n    \"image\": \"https://example.com/image.jpg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/brand/update/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"brand",
+										"update",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66d94dbf552dad76e8058e60"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove brand",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/brand/remove/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"brand",
+										"remove",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66d94dbf552dad76e8058e60"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Admin Brand API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing brands in the admin section. It includes route definitions and schema details for adding, updating, and removing brands.\n\n---\n\n## Endpoints\n\n### 1\\. Add Brand\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/admin/brands/add`\n    \n- **Description:** Adds a new brand.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"title\": \"Nike\",\n  // Required. The name of the brand.\n  \"description\": \"Leading sportswear brand\",\n  // Optional. A brief description of the brand. Must be a string or an empty string.\n  \"image\": \"https://example.com/nike.jpg\"\n  // Required. A URL to an image representing the brand. Must be a valid URL.\n}\n\n ```\n\n---\n\n### 2\\. Update Brand\n\n- **Method:** PATCH\n    \n- **Endpoint:** `/api/admin/brands/update/:id`\n    \n- **Description:** Updates an existing brand by ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the brand to update. Must be a valid MongoDB ObjectID.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"title\": \"Updated Nike\",\n  // Optional. The new name of the brand.\n  \"description\": \"Updated description\",\n  // Optional. The new description of the brand. Must be a string or an empty string.\n  \"image\": \"https://example.com/updated-nike.jpg\"\n  // Optional. The new URL to an image representing the brand. Must be a valid URL.\n}\n\n ```\n\n---\n\n### 3\\. Remove Brand\n\n- **Method:** DELETE\n    \n- **Endpoint:** `/api/admin/brands/remove/:id`\n    \n- **Description:** Deletes a brand by ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the brand to delete. Must be a valid MongoDB ObjectID.\n    \n\n---\n\nThis documentation provides the necessary details to interact with the admin brand management API, including the endpoints, methods, and schema requirements for managing brands."
+				},
+				{
+					"name": "product",
+					"item": [
+						{
+							"name": "add product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Example Product\",\r\n    \"description\": \"This is a detailed description of the example product.\",\r\n    \"category\": \"66d94eac552dad76e8058e80\",\r\n    \"brand\": \"66d94ee0552dad76e8058e8a\",\r\n    \"tags\": [],\r\n    \"price\": 99.99,\r\n    \"discount\": null,\r\n    \"quantity\": 100,\r\n    \"maxQuantityPerUser\": 5,\r\n    \"dimensions\": null,\r\n    \"materials\": [\r\n        \"Leather\",\r\n        \"Rubber\"\r\n    ],\r\n    \"sizes\": [],\r\n    \"colors\": [],\r\n    \"specifications\": [\r\n        {\r\n            \"title\": \"Battery Life\",\r\n            \"values\": [\r\n                \"10 hours\",\r\n                \"15 hours\"\r\n            ]\r\n        }\r\n    ],\r\n    \"warranty\": null,\r\n    \"manufacturerCountry\": null,\r\n    \"expirationDate\": null,\r\n    \"serialNumber\": null,\r\n    \"images\": {\r\n        \"main\": {\r\n            \"url\": \"https://example.com/main-image.jpg\"\r\n        },\r\n        \"list\": [\r\n            {\r\n                \"url\": \"https://example.com/image1.jpg\"\r\n            },\r\n            {\r\n                \"url\": \"https://example.com/image2.jpg\"\r\n            }\r\n        ]\r\n    },\r\n    \"videos\": [],\r\n    \"badges\": [],\r\n    \"breadcrumb\": [\r\n        {\r\n            \"title\": \"Home\",\r\n            \"url\": {\r\n                \"uri\": \"/home\"\r\n            }\r\n        },\r\n        {\r\n            \"title\": \"Category\",\r\n            \"url\": {\r\n                \"uri\": \"/category\"\r\n            }\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/product/add",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"product",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Admin Product API Documentation\n\n## Overview\n\nThis document describes the API endpoint for adding products in the admin section. It includes route definitions and schema details for the `POST /add` endpoint used to create new products.\n\n---\n\n## Endpoint\n\n### Add Product\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/admin/products/add`\n    \n- **Description:** Adds a new product.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"title\": \"Example Product\",\n  // Required. The title of the product.\n  \"description\": \"This is a detailed description of the example product.\",\n  // Required. The description of the product.\n  \"category\": \"60c72b2f9b1e8e4a5c8d4e8b\",\n  // Required. The ID of the product category. Must be a valid MongoDB ObjectID.\n  \"brand\": \"60c72b2f9b1e8e4a5c8d4e8c\",\n  // Required. The ID of the product brand. Must be a valid MongoDB ObjectID.\n  \"tags\": [\"tag1\", \"tag2\"],\n  // Optional. Tags associated with the product.\n  \"price\": 99.99,\n  // Required. The price of the product.\n  \"discount\": {\n    \"percentage\": 10,\n    // Required if discount is present.\n    \"startDate\": \"2024-09-01T00:00:00Z\",\n    // Required if discount is present. The start date of the discount in ISO date format.\n    \"endDate\": \"2024-09-30T23:59:59Z\"\n    // Required if discount is present. The end date of the discount in ISO date format.\n  },\n  // Optional. Discount details for the product.\n  \"quantity\": 100,\n  // Required. The quantity of the product available.\n  \"maxQuantityPerUser\": 5,\n  // Optional. Maximum quantity of the product that a user can purchase.\n  \"dimensions\": {\n    \"width\": 10.5,\n    // Optional. The width of the product.\n    \"height\": 20.0,\n    // Optional. The height of the product.\n    \"depth\": 5.5,\n    // Optional. The depth of the product.\n    \"weight\": 1.2\n    // Optional. The weight of the product.\n  },\n  // Optional. The dimensions of the product.\n  \"materials\": [\"Leather\", \"Rubber\"],\n  // Optional. Materials used in the product.\n  \"sizes\": [\"S\", \"M\", \"L\"],\n  // Optional. Available sizes for the product.\n  \"colors\": [\n    {\n      \"name\": \"Red\",\n      // Required. The name of the color.\n      \"hex\": \"#FF0000\"\n      // Required. The hexadecimal color code.\n    }\n  ],\n  // Optional. Available colors for the product.\n  \"specifications\": [\n    {\n      \"title\": \"Battery Life\",\n      // Required. Title of the specification.\n      \"values\": [\"10 hours\", \"15 hours\"]\n      // Required. Possible values for the specification.\n    }\n  ],\n  // Required. Specifications of the product.\n  \"warranty\": {\n    \"period\": \"2 years\",\n    // Optional. The warranty period.\n    \"provider\": \"Manufacturer\"\n    // Optional. The warranty provider.\n  },\n  // Optional. Warranty information for the product.\n  \"manufacturerCountry\": \"USA\",\n  // Optional. Country of manufacture.\n  \"expirationDate\": \"2025-09-04T00:00:00Z\",\n  // Optional. Expiration date of the product in ISO date format.\n  \"serialNumber\": \"12345-67890\",\n  // Optional. Serial number of the product.\n  \"images\": {\n    \"main\": {\n      \"url\": \"https://example.com/main-image.jpg\"\n      // Required. The URL of the main image.\n    },\n    \"list\": [\n      {\n        \"url\": \"https://example.com/image1.jpg\"\n        // Required. The URL of each image in the list.\n      },\n      {\n        \"url\": \"https://example.com/image2.jpg\"\n        // Required. The URL of each image in the list.\n      }\n    ]\n  },\n  // Required. Image details of the product.\n  \"videos\": [\n    {\n      \"title\": \"Product Video 1\",\n      // Required. Title of the video.\n      \"url\": \"https://example.com/video1.mp4\",\n      // Required. URL of the video.\n      \"cover\": \"https://example.com/video1-cover.jpg\"\n      // Optional. Cover image URL for the video.\n    }\n  ],\n  // Optional. Video details of the product.\n  \"badges\": [\n    {\n      \"title\": \"Best Seller\",\n      // Required. Title of the badge.\n      \"icon\": \"star\"\n      // Required. Icon for the badge.\n    }\n  ],\n  // Optional. Badges associated with the product.\n  \"breadcrumb\": [\n    {\n      \"title\": \"Home\",\n      // Required. Title of the breadcrumb.\n      \"url\": {\n        \"uri\": \"/home\"\n        // Required. URI of the breadcrumb.\n      }\n    },\n    {\n      \"title\": \"Category\",\n      // Required. Title of the breadcrumb.\n      \"url\": {\n        \"uri\": \"/category\"\n        // Required. URI of the breadcrumb.\n      }\n    }\n  ]\n  // Required. Breadcrumb trail for the product.\n}\n\n ```\n\n---\n\nThis documentation provides the necessary details for interacting with the product management API in the admin section, including the endpoint, method, and schema requirements for adding new products."
+				},
+				{
+					"name": "review",
+					"item": [
+						{
+							"name": "approve review",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/review/approve/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"review",
+										"approve",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66d956bc8ed99c8e17adea04"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reject review",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/admin/review/reject/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"review",
+										"reject",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66d956bc8ed99c8e17adea04"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Admin Review API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing reviews in the admin section. It includes route definitions for approving and rejecting reviews.\n\n---\n\n## Endpoints\n\n### 1\\. Approve Review\n\n- **Method:** PATCH\n    \n- **Endpoint:** `/api/admin/reviews/approve/:id`\n    \n- **Description:** Approves a review by ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the review to approve. Must be a valid MongoDB ObjectID.\n\n---\n\n### 2\\. Reject Review\n\n- **Method:** PATCH\n    \n- **Endpoint:** `/api/admin/reviews/reject/:id`\n    \n- **Description:** Rejects a review by ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the review to reject. Must be a valid MongoDB ObjectID.\n\n---\n\nThis documentation provides the necessary details to interact with the admin review management API, including the endpoints, methods, and expected responses for managing review approvals and rejections."
+				},
+				{
+					"name": "coupon",
+					"item": [
+						{
+							"name": "create coupon",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"SUMMER2024\",\r\n    \"description\": \"Get 20% off on all summer products\",\r\n    \"couponType\": \"PERCENTAGE\",\r\n    \"value\": 20,\r\n    \"expirationDate\": \"2024-09-30T23:59:59Z\",\r\n    \"usageLimit\": 100,\r\n    \"totalQuantity\": 500,\r\n    \"minimumPurchaseAmount\": 50.00\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/coupon/create",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"coupon",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Admin Coupon API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing coupons in the admin section. It includes route definitions and schema details for creating and validating coupons.\n\n---\n\n## Endpoints\n\n### 1\\. Create Coupon\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/admin/coupons/create`\n    \n- **Description:** Creates a new coupon.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"code\": \"SUMMER2024\",\n  // Required. The unique code for the coupon.\n  \"description\": \"Get 20% off on all summer products\",\n  // Optional. A description of the coupon. Can be an empty string.\n  \"couponType\": \"PERCENTAGE\",\n  // Required. The type of the coupon.\n  \"value\": 20,\n  // Required. The value of the coupon. If the type is PERCENTAGE, it must be between 1 and 100.\n  \"expirationDate\": \"2024-09-30T23:59:59Z\",\n  // Optional. The expiration date of the coupon in ISO 8601 format. Must not be in the past.\n  \"usageLimit\": 100,\n  // Optional. The maximum number of times the coupon can be used.\n  \"totalQuantity\": 500,\n  // Optional. The total number of coupons available.\n  \"minimumPurchaseAmount\": 50.00\n  // Optional. The minimum purchase amount required to use the coupon.\n}\n\n ```\n\n---\n\nThis documentation provides the necessary details to interact with the admin coupon management API, including the endpoints, methods, and schema requirements for managing coupons."
+				},
+				{
+					"name": "shipping method",
+					"item": [
+						{
+							"name": "add shipping method",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Standard Shipping\",\r\n    \"cost\": 5.99,\r\n    \"estimatedDelivery\": \"3-5 business days\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/admin/shipping-method/add",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"admin",
+										"shipping-method",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Admin Shipping Method API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing shipping methods in the admin section. It includes route definitions and schema details for adding new shipping methods.\n\n---\n\n## Endpoints\n\n### 1\\. Add Shipping Method\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/admin/shipping-methods/add`\n    \n- **Description:** Adds a new shipping method.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"title\": \"Standard Shipping\",\n  // Required. The name of the shipping method.\n  \"cost\": 5.99,\n  // Required. The cost of the shipping method.\n  \"estimatedDelivery\": \"3-5 business days\"\n  // Required. The estimated delivery time for the shipping method.\n}\n\n ```\n\n---\n\nThis documentation provides the necessary details to interact with the admin shipping method management API, including the endpoint, methods, and schema requirements for managing shipping methods."
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "profile",
+					"item": [
+						{
+							"name": "get profile",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/user/profile",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"user",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# User API Documentation\n\n## Overview\n\nThis document describes the API endpoint for managing user profiles. It includes route definitions and details for retrieving user profile information.\n\n---\n\n## Endpoints\n\n### 1\\. Get User Profile\n\n- **Method:** GET\n    \n- **Endpoint:** `/api/user/profile`\n    \n- **Description:** Retrieves the profile information of the currently authenticated user.\n    \n---\n\nThis documentation provides the necessary details to interact with the user profile management API, including the endpoint and method for retrieving user profile information.\n"
+				},
+				{
+					"name": "cart",
+					"item": [
+						{
+							"name": "add to cart",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"66d94f0d552dad76e8058e91\",\r\n    \"selectedColor\": {\r\n        \"name\": \"Black\",\r\n        \"hex\": \"#000000\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/cart/add",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"cart",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update cart item",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"66d94f0d552dad76e8058e91\",\r\n    \"quantity\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/cart/update",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"cart",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "apply coupon to cart",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"couponCode\": \"SUMMER2024\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/cart/coupon",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"cart",
+										"coupon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove from cart",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/cart/remove/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"cart",
+										"remove",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66d94f0d552dad76e8058e91"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "clear cart",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/cart/clear",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"cart",
+										"clear"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Cart API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing cart items. It includes route definitions and schema details for adding, updating, and removing cart items, as well as applying coupons and clearing the cart.\n\n---\n\n## Endpoints\n\n### 1\\. Add Item to Cart\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/cart/add`\n    \n- **Description:** Adds a new item to the cart.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"productId\": \"605c72efb4b7a7b7d8e5e0a1\",\n  // Required. The ID of the product to add to the cart. Must be a valid MongoDB ObjectID.\n  \"selectedColor\": {\n    \"name\": \"Red\",\n    // Required. The name of the selected color.\n    \"hex\": \"#FF0000\"\n    // Required. The hex color code. Must be a valid hex color code.\n  }\n}\n\n ```\n\n### 2\\. Update Cart Item\n\n- **Method:** PATCH\n    \n- **Endpoint:** `/api/cart/update`\n    \n- **Description:** Updates the quantity of an item in the cart.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"productId\": \"605c72efb4b7a7b7d8e5e0a1\",\n  // Required. The ID of the product to update in the cart. Must be a valid MongoDB ObjectID.\n  \"quantity\": 3\n  // Required. The new quantity of the product in the cart.\n}\n\n ```\n\n### 3\\. Apply Coupon to Cart\n\n- **Method:** PATCH\n    \n- **Endpoint:** `/api/cart/coupon`\n    \n- **Description:** Applies a coupon to the cart.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"couponCode\": \"SUMMER2024\"\n  // Required. The code of the coupon to apply to the cart.\n}\n\n ```\n\n### 4\\. Remove Item from Cart\n\n- **Method:** DELETE\n    \n- **Endpoint:** `/api/cart/remove/:id`\n    \n- **Description:** Removes an item from the cart by ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the cart item to remove. Must be a valid MongoDB ObjectID.\n    \n\n---\n\n### 5\\. Clear Cart\n\n- **Method:** DELETE\n    \n- **Endpoint:** `/api/cart/clear`\n    \n- **Description:** Clears all items from the cart.\n    \n---\n\nThis documentation provides the necessary details to interact with the cart management API, including the endpoints, methods, and schema requirements for managing cart items."
+				},
+				{
+					"name": "address",
+					"item": [
+						{
+							"name": "add address",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullName\": \"John Doe\",\r\n    \"phoneNumber\": \"+1234567890\",\r\n    \"street\": \"123 Elm Street\",\r\n    \"city\": \"Springfield\",\r\n    \"region\": \"Illinois\",\r\n    \"postalCode\": \"62701\",\r\n    \"isPrimary\": true,\r\n    \"isRecipient\": true,\r\n    \"recipientName\": \"\",\r\n    \"recipientPhone\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/address/add",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"address",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update address",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullName\": \"John Doe\",\r\n    \"phoneNumber\": \"+1234567890\",\r\n    \"street\": \"123 Elm Street\",\r\n    \"city\": \"Springfield\",\r\n    \"region\": \"Illinois\",\r\n    \"postalCode\": \"62701\",\r\n    \"isPrimary\": true,\r\n    \"isRecipient\": false,\r\n    \"recipientName\": \"Jane Doe\",\r\n    \"recipientPhone\": \"+0987654321\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/address/update/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"address",
+										"update",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6695134890d4735b6fd9af8d"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Address API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing addresses. It includes route definitions and schema details for adding and updating addresses.\n\n---\n\n## Endpoints\n\n### 1\\. Add Address\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/addresses/add`\n    \n- **Description:** Adds a new address.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"fullName\": \"John Doe\",\n  // Required. The full name of the person.\n  \"phoneNumber\": \"+1234567890\",\n  // Required. The phone number of the person.\n  \"street\": \"123 Elm Street\",\n  // Required. The street address.\n  \"city\": \"Springfield\",\n  // Required. The city of the address.\n  \"region\": \"Illinois\",\n  // Required. The region or state of the address.\n  \"postalCode\": \"62701\",\n  // Required. The postal code.\n  \"isPrimary\": true,\n  // Required. Indicates if the address is the primary address.\n  \"isRecipient\": false,\n  // Optional. Indicates if the address is for a recipient other than the user. Must be a boolean value.\n  \"recipientName\": \"Jane Doe\",\n  // Required if isRecipient is false. The name of the recipient.\n  \"recipientPhone\": \"+0987654321\"\n  // Required if isRecipient is false. The phone number of the recipient.\n}\n\n ```\n\n---\n\n### 2\\. Update Address\n\n- **Method:** PATCH\n    \n- **Endpoint:** `/api/addresses/update/:id`\n    \n- **Description:** Updates an existing address by ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the address to update. Must be a valid MongoDB ObjectID.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"fullName\": \"John Smith\",\n  // Optional. The new full name of the person.\n  \"phoneNumber\": \"+1234567890\",\n  // Optional. The new phone number of the person.\n  \"street\": \"456 Oak Avenue\",\n  // Optional. The new street address.\n  \"city\": \"Springfield\",\n  // Optional. The new city of the address.\n  \"region\": \"Illinois\",\n  // Optional. The new region or state of the address.\n  \"postalCode\": \"62702\",\n  // Optional. The new postal code.\n  \"isPrimary\": false,\n  // Optional. Indicates if the address is the primary address. Must be a boolean value.\n  \"isRecipient\": true,\n  // Optional. Indicates if the address is for a recipient other than the user. Must be a boolean value.\n  \"recipientName\": \"Jane Smith\",\n  // Required if isRecipient is false. The name of the recipient.\n  \"recipientPhone\": \"+0987654321\"\n  // Required if isRecipient is false. The phone number of the recipient.\n}\n\n ```\n\n---\n\nThis documentation provides the necessary details to interact with the address management API, including the endpoints, methods, and schema requirements for managing addresses."
+				},
+				{
+					"name": "shipping method",
+					"item": [
+						{
+							"name": "get list of shipping methods",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/shipping-method/list",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"shipping-method",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get shipping method by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/shipping-method/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"shipping-method",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "667a6e6b88314f43505075ef"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Shipping Method API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing shipping methods. It includes route definitions and details for retrieving shipping methods.\n\n---\n\n## Endpoints\n\n### 1\\. Get List of Shipping Methods\n\n- **Method:** GET\n    \n- **Endpoint:** `/api/shipping-methods/list`\n    \n- **Description:** Retrieves a list of all available shipping methods.\n    \n\n---\n\n### 2\\. Get Shipping Method by ID\n\n- **Method:** GET\n    \n- **Endpoint:** `/api/shipping-methods/:id`\n    \n- **Description:** Retrieves a specific shipping method by its ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the shipping method to retrieve. Must be a valid MongoDB ObjectID.\n    \n\n---\n\nThis documentation provides the necessary details to interact with the shipping method management API, including the endpoints and methods for retrieving shipping method information."
+				},
+				{
+					"name": "order",
+					"item": [
+						{
+							"name": "create order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"shippingAddress\": \"66d950fd8a7395adb3dfa125\",\r\n  \"billingAddress\":\"66d950fd8a7395adb3dfa125\",\r\n  \"shippingMethod\": \"66d94f89552dad76e8058e9c\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/order/create",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"order",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Order API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing orders. It includes route definitions and schema details for validation.\n\n---\n\n## Endpoints\n\n### 1\\. Create Order\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/orders/create`\n    \n- **Description:** Creates a new order with the specified shipping and billing information.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"shippingAddress\": \"60d21b4667d0d8992e610c85\", \n  // Required. The ID of the shipping address. Must be a valid MongoDB ObjectID.\n  \"billingAddress\": \"60d21b4667d0d8992e610c86\", \n  // Required. The ID of the billing address. Must be a valid MongoDB ObjectID.\n  \"shippingMethod\": \"60d21b4667d0d8992e610c87\" \n  // Required. The ID of the shipping method. Must be a valid MongoDB ObjectID.\n}\n\n ```\n\n---\n\nThis documentation provides the details required to interact with the order creation API, including endpoint, method, and the expected request body format."
+				},
+				{
+					"name": "credit card",
+					"item": [
+						{
+							"name": "add credit card",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cardNumber\": \"4111111111111111\",\r\n    \"expiryDate\": \"12/25\",\r\n    \"cardHolderName\": \"John Doe\",\r\n    \"cvv\": \"123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/credit-cards/add",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"credit-cards",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Credit Card API Documentation\n\n## Overview\n\nThis document describes the API endpoint for adding a credit card. It includes route definitions and schema details for validating credit card information.\n\n---\n\n## Endpoints\n\n### 1\\. Add Credit Card\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/credit-card/add`\n    \n- **Description:** Adds a new credit card.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"cardNumber\": \"4111111111111111\",\n  // Required. The credit card number.\n  \"expiryDate\": \"12/24\",\n  // Required. The expiry date of the card in MM/YY format.\n  \"cardHolderName\": \"John Doe\",\n  // Required. The name of the card holder.\n  \"cvv\": \"123\"\n  // Required. The CVV (Card Verification Value).\n}\n\n ```\n\n---\n\nThis documentation provides the necessary details to interact with the credit card management API, including the endpoint, method, and schema requirements for adding a credit card."
+				},
+				{
+					"name": "payment",
+					"item": [
+						{
+							"name": "create payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"orderId\": \"66d956418ed99c8e17ade9ea\",\r\n  \"paymentMethod\": \"CREDIT_CARD\",\r\n  \"creditCard\":\"66d951d68a7395adb3dfa13a\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/payment/create",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"payment",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Payment API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing payments. It includes route definitions and schema details for validation.\n\n---\n\n## Endpoints\n\n### 1\\. Create Payment\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/payments/create`\n    \n- **Description:** Creates a new payment for an order.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"orderId\": \"60d21b4667d0d8992e610c85\", \n  // Required. The ID of the order to be paid for. Must be a valid MongoDB ObjectID.\n  \"paymentMethod\": \"CREDIT_CARD\", \n  // Required. The method of payment. Must be either \"CREDIT_CARD\" or \"PAYPAL\".\n  \"creditCard\": \"60d21b4667d0d8992e610c86\" \n  // Required if the payment method is \"CREDIT_CARD\". The ID of the credit card. Must be a valid MongoDB ObjectID.\n}\n\n ```\n\n---\n\nThis documentation provides the necessary details to interact with the payment creation API, including the endpoint, method, and the expected request body format."
+				},
+				{
+					"name": "category",
+					"item": [
+						{
+							"name": "get list of categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/category/list",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"category",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get category by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/category/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"category",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66744b739723f08e7cb74b7f"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Category API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing product categories. It includes route definitions and details for retrieving categories.\n\n---\n\n## Endpoints\n\n### 1\\. Get List of Categories\n\n- **Method:** GET\n    \n- **Endpoint:** `/api/categories/list`\n    \n- **Description:** Retrieves a list of all categories.\n    \n---\n\n### 2\\. Get Category by ID\n\n- **Method:** GET\n    \n- **Endpoint:** `/api/categories/:id`\n    \n- **Description:** Retrieves a specific category by its ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the category to retrieve. Must be a valid MongoDB ObjectID.\n\n---\n\nThis documentation provides the necessary details to interact with the category management API, including the endpoints and methods for retrieving categories.\n"
+				},
+				{
+					"name": "brand",
+					"item": [
+						{
+							"name": "get list of brands",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/brand/list",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"brand",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get brand by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/brand/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"brand",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66474d0b49ae5218b4256bcc"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Brand API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing brands. It includes route definitions and details for retrieving brand information.\n\n---\n\n## Endpoints\n\n### 1\\. Get List of Brands\n\n- **Method:** GET\n    \n- **Endpoint:** `/api/brands/list`\n    \n- **Description:** Retrieves a list of all brands.\n    \n---\n\n### 2\\. Get Brand by ID\n\n- **Method:** GET\n    \n- **Endpoint:** `/api/brands/:id`\n    \n- **Description:** Retrieves a specific brand by its ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the brand to retrieve. Must be a valid MongoDB ObjectID.\n\n---\n\nThis documentation provides the necessary details to interact with the brand management API, including the endpoints and methods for retrieving brand information.\n"
+				},
+				{
+					"name": "product",
+					"item": [
+						{
+							"name": "get list of products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/product/list",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"product",
+										"list"
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": "phone",
+											"disabled": true
+										},
+										{
+											"key": "brand",
+											"value": "apple",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "priceDesc",
+											"description": "Latest => latest\nEarliest => earliest\nMost Popular => popular\nPrice: Low to High => priceAsc\nPrice: High to Low => priceDesc\nHighest Discount => highestDiscount\n",
+											"disabled": true
+										},
+										{
+											"key": "minPrice",
+											"value": "130",
+											"disabled": true
+										},
+										{
+											"key": "maxPrice",
+											"value": "150",
+											"disabled": true
+										},
+										{
+											"key": "discount",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "color",
+											"value": "Red",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "10",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get Product By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/product/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"product",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66cf382ac6339ddf06ea1626"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "search products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/product/list/search",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"product",
+										"list",
+										"search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "galaxy",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Product API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing products. It includes route definitions and details for retrieving and searching products.\n\n---\n\n## Endpoints\n\n### 1\\. Get List of Products\n\n- **Method:** GET\n    \n- **Endpoint:** `/api/products/list`\n    \n- **Description:** Retrieves a list of all products.\n    \n\n---\n\n### 2\\. Get Product by ID\n\n- **Method:** GET\n    \n- **Endpoint:** `/api/products/:id`\n    \n- **Description:** Retrieves a specific product by its ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the product to retrieve. Must be a valid MongoDB ObjectID.\n    \n\n---\n\n### 3\\. Search Products\n\n- **Method:** GET\n    \n- **Endpoint:** `/api/products/list/search`\n    \n- **Description:** Searches for products based on query parameters.\n    \n\n---\n\nThis documentation provides the necessary details to interact with the product management API, including the endpoints and methods for retrieving and searching products."
+				},
+				{
+					"name": "review",
+					"item": [
+						{
+							"name": "add review",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"66d94f0d552dad76e8058e91\",\r\n    \"title\": \"Great Product!\",\r\n    \"rating\": 5,\r\n    \"review\": \"I absolutely loved this product. It exceeded my expectations!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/review/add",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"review",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "like review",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/review/like/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"review",
+										"like",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66d956bc8ed99c8e17adea04"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dislike review",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/review/dislike/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"review",
+										"dislike",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66d956bc8ed99c8e17adea04"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Review API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing reviews. It includes route definitions and schema details for adding, liking, and disliking reviews.\n\n---\n\n## Endpoints\n\n### 1\\. Add Review\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/reviews/add`\n    \n- **Description:** Adds a new review for a product.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"productId\": \"605c72efb4b7a7b7d8e5e0a1\",\n  // Required. The ID of the product being reviewed. Must be a valid MongoDB ObjectID.\n  \"title\": \"Great Product!\",\n  // Required. The title of the review.\n  \"rating\": 5,\n  // Required. The rating given to the product.\n  \"review\": \"I absolutely loved this product. It exceeded my expectations!\"\n  // Optional. The text of the review.\n}\n\n ```\n\n### 2\\. Like Review\n\n- **Method:** PATCH\n    \n- **Endpoint:** `/api/reviews/like/:id`\n    \n- **Description:** Likes a review by ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the review to like. Must be a valid MongoDB ObjectID.\n    \n\n---\n\n### 3\\. Dislike Review\n\n- **Method:** PATCH\n    \n- **Endpoint:** `/api/reviews/dislike/:id`\n    \n- **Description:** Dislikes a review by ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the review to dislike. Must be a valid MongoDB ObjectID.\n    \n---\n\nThis documentation provides the necessary details to interact with the review management API, including the endpoints, methods, and schema requirements for managing reviews."
+				},
+				{
+					"name": "wishlist",
+					"item": [
+						{
+							"name": "add to wishlist",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"66d94f0d552dad76e8058e91\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/wishlist/add",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"wishlist",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove from wishlist",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/wishlist/remove/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"wishlist",
+										"remove",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "66d94f0d552dad76e8058e91"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "# Wishlist API Documentation\n\n## Overview\n\nThis document describes the API endpoints for managing wishlist items. It includes route definitions for adding and removing items from the wishlist.\n\n---\n\n## Endpoints\n\n### 1\\. Add Item to Wishlist\n\n- **Method:** POST\n    \n- **Endpoint:** `/api/wishlist/add`\n    \n- **Description:** Adds a new item to the wishlist.\n    \n\n**Request Body:**\n\n``` json\n{\n  \"productId\": \"605c72efb4b7a7b7d8e5e0a1\"\n  // Required. The ID of the product to add to the wishlist. Must be a valid MongoDB ObjectID.\n}\n\n ```\n\n### 2\\. Remove Item from Wishlist\n\n- **Method:** DELETE\n    \n- **Endpoint:** `/api/wishlist/remove/:id`\n    \n- **Description:** Removes an item from the wishlist by ID.\n    \n\n**Request Parameters:**\n\n- `id` (string) - The ID of the wishlist item to remove. Must be a valid MongoDB ObjectID.\n    \n---\n\nThis documentation provides the necessary details to interact with the wishlist management API, including the endpoints, methods, and schema requirements for managing wishlist items."
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:5000/api"
+		}
+	]
+}
