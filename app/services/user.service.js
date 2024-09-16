@@ -133,9 +133,11 @@ class UserService {
                     (item) => item.product.valueOf() === product._id.valueOf()
                   );
                   if (!item) return product;
+                  const totalPrice = product.price * item.quantity;
                   return {
                     product: product,
                     quantity: item.quantity,
+                    totalPrice: totalPrice,
                     selectedColor: item.selectedColor,
                   };
                 });
