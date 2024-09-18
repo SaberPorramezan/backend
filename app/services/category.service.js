@@ -5,9 +5,24 @@ const messages = require("../../configs/messages");
 
 class CategoryService {
   static async getListOfCategories() {
-    const categories = await CategoryModel.find({});
+    const categories = await CategoryModel.find({}).lean();
 
-    return categories;
+    const categoryMap = {};
+    categories.forEach((category) => {
+      category.children = [];
+      categoryMap[category._id] = category;
+    });
+
+    const rootCategories = [];
+    categories.forEach((category) => {
+      if (category.parent) {
+        categoryMap[category.parent]?.children.push(category);
+      } else {
+        rootCategories.push(category);
+      }
+    });
+
+    return rootCategories;
   }
   static async getCategoryById(categoryId) {
     if (!mongoose.Types.ObjectId.isValid(categoryId))
