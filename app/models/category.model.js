@@ -7,7 +7,7 @@ const CategorySchema = new mongoose.Schema(
     slug: { type: String, unique: true, required: true },
     description: { type: String, trim: true, lowercase: true, default: "" },
     parent: { type: ObjectId, ref: "Category", default: null },
-    icon: { type: String, required: true },
+    icon: { type: String, trim: true, default: null },
     image: { type: String, trim: true, default: null },
     isActive: { type: Boolean, default: true },
   },

@@ -27,6 +27,7 @@ const addCategorySchema = Joi.object({
     .min(1)
     .max(100)
     .pattern(IconPattern)
+    .allow(null)
     .required()
     .messages(messages.joi.string("Icon")),
   image: Joi.string()
