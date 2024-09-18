@@ -3,8 +3,8 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const CategorySchema = new mongoose.Schema(
   {
-    title: { type: String, required: true, unique: true, trim: true },
-    slug: { type: String, unique: true, required: true },
+    title: { type: String, required: true, trim: true },
+    slug: { type: String, required: true },
     description: { type: String, trim: true, lowercase: true, default: "" },
     parent: { type: ObjectId, ref: "Category", default: null },
     icon: { type: String, trim: true, default: null },
@@ -17,7 +17,7 @@ const CategorySchema = new mongoose.Schema(
 );
 
 // Indexes
-CategorySchema.index({ title: "text" });
+CategorySchema.index({ title: 1, parent: 1 }, { unique: true });
 CategorySchema.index({ parent: 1 });
 
 module.exports = {

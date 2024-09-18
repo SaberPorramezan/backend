@@ -6,8 +6,6 @@ class AdminCategoryService extends CategoryService {
   static async addCategory(categoryData) {
     const { title } = categoryData;
 
-    await this.isCategoryExistsByTitle(title);
-
     categoryData.slug = generateSlug(title);
     const category = await CategoryModel.create(categoryData);
 
