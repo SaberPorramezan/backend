@@ -163,7 +163,7 @@ const addProductSchema = Joi.object({
               .messages(messages.joi.string("Each specification value"))
           )
           .min(1)
-          .max(10)
+          .max(20)
           .required()
           .messages(messages.joi.array("Specification values")),
       }).messages(messages.joi.object("Each specification"))
