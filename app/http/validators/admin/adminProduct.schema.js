@@ -17,7 +17,7 @@ const addProductSchema = Joi.object({
     .messages(messages.joi.string("Title")),
   description: Joi.string()
     .min(1)
-    .max(2000)
+    .max(5000)
     .required()
     .messages(messages.joi.string("Description")),
   category: Joi.string()
@@ -82,22 +82,30 @@ const addProductSchema = Joi.object({
 
   // Product-specific attributes
   dimensions: Joi.object({
-    width: Joi.number()
+    width: Joi.string()
+      .min(1)
+      .max(100)
       .optional()
       .allow(null)
-      .messages(messages.joi.number("Width")),
-    height: Joi.number()
+      .messages(messages.joi.string("Width")),
+    height: Joi.string()
+      .min(1)
+      .max(100)
       .optional()
       .allow(null)
-      .messages(messages.joi.number("Height")),
-    depth: Joi.number()
+      .messages(messages.joi.string("Height")),
+    depth: Joi.string()
+      .min(1)
+      .max(100)
       .optional()
       .allow(null)
-      .messages(messages.joi.number("Depth")),
-    weight: Joi.number()
+      .messages(messages.joi.string("Depth")),
+    weight: Joi.string()
+      .min(1)
+      .max(100)
       .optional()
       .allow(null)
-      .messages(messages.joi.number("Weight")),
+      .messages(messages.joi.string("Weight")),
   })
     .optional()
     .allow(null)
@@ -144,14 +152,14 @@ const addProductSchema = Joi.object({
       Joi.object({
         title: Joi.string()
           .min(1)
-          .max(255)
+          .max(100)
           .required()
           .messages(messages.joi.string("Specification title")),
         values: Joi.array()
           .items(
             Joi.string()
               .min(1)
-              .max(100)
+              .max(255)
               .messages(messages.joi.string("Each specification value"))
           )
           .min(1)
@@ -161,7 +169,7 @@ const addProductSchema = Joi.object({
       }).messages(messages.joi.object("Each specification"))
     )
     .min(1)
-    .max(30)
+    .max(100)
     .required()
     .messages(messages.joi.array("Specifications")),
 

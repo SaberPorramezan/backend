@@ -29,10 +29,10 @@ const ProductSchema = new mongoose.Schema(
 
     // Product-specific attributes
     dimensions: {
-      width: { type: Number, default: null },
-      height: { type: Number, default: null },
-      depth: { type: Number, default: null },
-      weight: { type: Number, default: null },
+      width: { type: String, default: null },
+      height: { type: String, default: null },
+      depth: { type: String, default: null },
+      weight: { type: String, default: null },
       _id: false,
     },
     materials: { type: [String], default: [], _id: false },
