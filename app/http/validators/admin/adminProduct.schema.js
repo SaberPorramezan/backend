@@ -17,7 +17,7 @@ const addProductSchema = Joi.object({
     .messages(messages.joi.string("Title")),
   description: Joi.string()
     .min(1)
-    .max(5000)
+    .max(10000)
     .required()
     .messages(messages.joi.string("Description")),
   category: Joi.string()
