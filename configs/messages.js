@@ -94,6 +94,7 @@ module.exports = {
     cart: {
       productNotInCart: "Product not in the cart.", // Used: cart.service
       cartAlreadyEmpty: "Cart is already empty.", // Used: cart.service, order.service
+      selectedColorRequired: "Selected color is required.", // Used: cart.service
     },
 
     // Order Errors

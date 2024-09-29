@@ -21,8 +21,9 @@ const addCartItemSchema = Joi.object({
       .required()
       .messages(messages.joi.string("Hex color code")),
   })
-    .required()
-    .messages(messages.joi.array("Selected color")),
+    .allow(null)
+    .optional()
+    .messages(messages.joi.object("Selected color")),
 });
 const updateCartItemSchema = Joi.object({
   productId: Joi.string()

@@ -21,6 +21,10 @@ class CartService {
     if (cartItem) {
       cartItem.quantity = newQuantity;
     } else {
+      if (!selectedColor)
+        throw createHttpError.BadRequest(
+          messages.errors.cart.selectedColorRequired
+        );
       cartItem = { product: productId, quantity: 1, selectedColor };
       cart.items.push(cartItem);
     }
